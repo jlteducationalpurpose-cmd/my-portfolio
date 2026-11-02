@@ -1,0 +1,607 @@
+/* THE APOTHECARY DIARIES HIGH-END IMPERIAL PALETTE (WIDE VIEW) */
+:root {
+  --bg-dark: #04090b;
+  --panel-bg: rgba(10, 24, 28, 0.9);
+  --card-bg: rgba(16, 36, 42, 0.78);
+  
+  --apothecary-jade: #2dd4bf;
+  --apothecary-jade-glow: rgba(45, 212, 191, 0.45);
+  --apothecary-gold: #fbbf24;
+  --apothecary-gold-glow: rgba(251, 191, 36, 0.45);
+  --apothecary-crimson: #f43f5e;
+
+  --text-main: #f0fdfa;
+  --text-sub: #a7f3d0;
+  --text-muted: #94a3b8;
+  
+  --border-jade: rgba(45, 212, 191, 0.35);
+  --border-gold: rgba(251, 191, 36, 0.4);
+  
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* STRICTLY LOCKED SINGLE SCREEN */
+  perspective: 1400px;
+}
+
+/* BACKGROUND LIGHT PARTICLES */
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(160px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-jade {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, var(--apothecary-jade-glow) 0%, transparent 70%);
+  top: -150px;
+  left: -120px;
+}
+
+.blob-gold {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--apothecary-gold-glow) 0%, transparent 70%);
+  bottom: -150px;
+  right: -120px;
+}
+
+.blob-crimson {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, transparent 70%);
+  top: 35%;
+  left: 45%;
+}
+
+/* WIDER 3D WRAPPER CONTAINER */
+.app-3d-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 96vw;
+  max-width: 1380px;
+  height: 94vh;
+  background: var(--panel-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-gold);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.88), inset 0 0 35px rgba(45, 212, 191, 0.12);
+  transform-style: preserve-3d;
+}
+
+/* NAVBAR & ANIME CHARACTER AVATARS */
+.navbar-3d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  border-bottom: 1px solid var(--border-jade);
+}
+
+.brand-box, .user-chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.character-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--apothecary-gold);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 14px var(--apothecary-gold-glow);
+}
+
+.maomao-nav {
+  background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=150&q=80');
+}
+
+.jinshi-nav {
+  background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=150&q=80');
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--apothecary-gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-btn.active, .nav-btn:hover {
+  color: #04090b;
+  background: linear-gradient(135deg, var(--apothecary-jade), #0d9488);
+  box-shadow: 0 4px 18px var(--apothecary-jade-glow);
+  font-weight: 700;
+  transform: translateY(-2px);
+}
+
+.user-chip span {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--apothecary-gold);
+  border: 1px solid var(--border-gold);
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+/* MAIN VIEWPORT */
+.main-viewport {
+  flex: 1;
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+}
+
+.tab-content.active-tab {
+  display: block;
+  animation: floatIn3D 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes floatIn3D {
+  from { opacity: 0; transform: translateZ(-100px) rotateX(10deg); }
+  to { opacity: 1; transform: translateZ(0) rotateX(0); }
+}
+
+/* COVER CARD WIDER 3D TILT EFFECT */
+.cover-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cover-card-3d {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  padding: 42px 54px;
+  border-radius: 24px;
+  box-shadow: 0 25px 55px rgba(0,0,0,0.7);
+  width: 100%;
+  max-width: 1050px;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cover-card-3d:hover {
+  box-shadow: 0 35px 75px rgba(45, 212, 191, 0.3);
+}
+
+.cover-portrait-wrapper {
+  position: relative;
+  transform: translateZ(40px);
+}
+
+.portrait-frame-3d {
+  width: 220px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--apothecary-gold);
+  box-shadow: 0 15px 35px var(--apothecary-gold-glow);
+  background: #000;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.portrait-frame-3d:hover .portrait-img {
+  transform: scale(1.05);
+}
+
+/* INTERACTIVE UPLOAD BUTTON ON COVER */
+.upload-badge-btn {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(25px);
+  background: linear-gradient(135deg, var(--apothecary-jade), #0d9488);
+  color: #04090b;
+  border: 1px solid var(--apothecary-gold);
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 11.5px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--apothecary-jade-glow);
+  transition: all 0.2s ease;
+}
+
+.upload-badge-btn:hover {
+  transform: translateX(-50%) translateZ(35px) scale(1.08);
+  background: #ffffff;
+}
+
+.cover-info {
+  display: flex;
+  flex-direction: column;
+  transform: translateZ(30px);
+  flex: 1;
+}
+
+.apothecary-badge {
+  font-family: var(--font-heading);
+  color: var(--apothecary-gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  transform: translateZ(10px);
+}
+
+.cover-name {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff, var(--text-sub));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateZ(25px);
+}
+
+.cover-degree {
+  color: var(--apothecary-jade);
+  font-size: 17px;
+  font-weight: 600;
+  transform: translateZ(15px);
+}
+
+.cover-sub {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  margin-bottom: 16px;
+  transform: translateZ(10px);
+}
+
+.quote-box-apothecary {
+  background: rgba(45, 212, 191, 0.08);
+  border-left: 3px solid var(--apothecary-jade);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 24px;
+  transform: translateZ(20px);
+}
+
+.narrator-tag {
+  display: block;
+  font-size: 11px;
+  color: var(--apothecary-gold);
+  margin-top: 6px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn-apothecary {
+  background: linear-gradient(135deg, var(--apothecary-gold), #d97706);
+  color: #000;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-size: 14.5px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 25px var(--apothecary-gold-glow);
+  transform: translateZ(50px);
+  transition: all 0.25s ease;
+  align-self: flex-start;
+}
+
+.btn-apothecary:hover {
+  transform: translateZ(65px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(251, 191, 36, 0.7);
+}
+
+/* SECTION HEADER WITH NARRATOR DIALOGUE */
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h2 span {
+  color: var(--apothecary-jade);
+}
+
+.narrator-bubble {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid var(--border-gold);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-sub);
+  max-width: 480px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+}
+
+.narrator-name {
+  color: var(--apothecary-gold);
+  font-weight: 700;
+}
+
+/* CARDS & GRIDS */
+.grid-3d {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  background: var(--card-bg);
+  border: 1px solid var(--border-jade);
+  border-radius: 20px;
+  padding: 24px;
+  transition: transform 0.2s ease-out, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card-3d:hover {
+  border-color: var(--apothecary-jade);
+  box-shadow: 0 20px 40px var(--apothecary-jade-glow);
+  transform: translateY(-4px) translateZ(10px);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  transform: translateZ(15px);
+}
+
+.card-emoji {
+  font-size: 26px;
+}
+
+.pill-tag {
+  background: rgba(45, 212, 191, 0.15);
+  color: var(--apothecary-jade);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.pill-crimson {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--apothecary-crimson);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.card-3d h3 {
+  font-size: 16.5px;
+  color: var(--apothecary-jade);
+  margin-bottom: 6px;
+  transform: translateZ(15px);
+}
+
+.school-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  transform: translateZ(10px);
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  transform: translateZ(5px);
+}
+
+.faint {
+  font-size: 11.5px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* MEDIA PLACEHOLDERS */
+.media-placeholder {
+  width: 100%;
+  height: 105px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px dashed var(--border-gold);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--apothecary-gold);
+  font-size: 11.5px;
+  padding: 10px;
+  margin: 10px 0;
+  transform: translateZ(15px);
+}
+
+.mini-box {
+  height: 55px;
+  font-size: 10.5px;
+}
+
+.photo-grid-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  transform: translateZ(10px);
+}
+
+.tag-jade {
+  background: rgba(45, 212, 191, 0.15);
+  color: var(--apothecary-jade);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* FUTURE SPLIT LAYOUT */
+.split-3d {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.highlight-3d {
+  border-color: var(--border-gold);
+}
+
+.skill-chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  transform: translateZ(15px);
+}
+
+.skill-chips span {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fecdd3;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ai-future-box {
+  height: 230px;
+  border-color: var(--apothecary-jade);
+  color: var(--apothecary-jade);
+  transform: translateZ(30px);
+}
+
+/* BOTTOM CONTROL BAR */
+.bottom-bar-3d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 48px;
+  border-top: 1px solid var(--border-jade);
+}
+
+.ctrl-btn {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-jade);
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ctrl-btn:hover {
+  border-color: var(--apothecary-jade);
+  color: var(--apothecary-jade);
+  transform: translateY(-2px);
+}
+
+.btn-primary-ctrl {
+  background: linear-gradient(135deg, var(--apothecary-jade), #0d9488);
+  color: #04090b;
+  border: none;
+  font-weight: 800;
+  box-shadow: 0 4px 18px var(--apothecary-jade-glow);
+}
+
+.btn-primary-ctrl:hover {
+  box-shadow: 0 6px 24px rgba(45, 212, 191, 0.6);
+  color: #04090b;
+}
+
+.page-num {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.page-num span {
+  color: var(--apothecary-gold);
+  font-weight: 700;
+}

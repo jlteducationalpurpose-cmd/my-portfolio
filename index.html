@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camit Jewel Lyn Treash T. — Professional BSIT Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND AMBIENT PARTICLES -->
+  <div class="bg-glow blob-jade"></div>
+  <div class="bg-glow blob-gold"></div>
+  <div class="bg-glow blob-crimson"></div>
+
+  <div class="app-3d-wrapper">
+    
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="navbar-3d">
+      <div class="brand-box">
+        <div class="character-avatar maomao-nav"></div>
+        <div class="logo">Camit <span>Jewel</span></div>
+      </div>
+
+      <div class="nav-links">
+        <button class="nav-btn active" onclick="goToTab(0)">Cover</button>
+        <button class="nav-btn" onclick="goToTab(1)">Past</button>
+        <button class="nav-btn" onclick="goToTab(2)">Present</button>
+        <button class="nav-btn" onclick="goToTab(3)">Future</button>
+      </div>
+
+      <div class="user-chip">
+        <div class="character-avatar jinshi-nav"></div>
+        <span>BSIT 1st Year</span>
+      </div>
+    </nav>
+
+    <!-- MAIN VIEWPORT (LOCKED SINGLE SCREEN - NO VERTICAL SCROLL) -->
+    <main class="main-viewport">
+
+      <!-- PAGE 0: COVER PAGE -->
+      <section id="tab-0" class="tab-content active-tab">
+        <div class="cover-layout">
+          <div class="cover-card-3d">
+            
+            <div class="cover-portrait-wrapper">
+              <div class="portrait-frame-3d">
+                <img src="cover-photo.jpg" alt="Camit Jewel Lyn Treash T." class="portrait-img" id="displayImage" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';">
+              </div>
+              <label for="imageUploadInput" class="upload-badge-btn" title="Click to change cover photo">
+                📷 Change Photo
+              </label>
+              <input type="file" id="imageUploadInput" accept="image/*" style="display: none;" onchange="loadCustomImage(event)">
+            </div>
+
+            <div class="cover-info">
+              <div class="title-tag">
+                <span class="apothecary-badge">🌿 Jewel's Introduction Log</span>
+              </div>
+              <h1 class="cover-name">Camit Jewel Lyn Treash T.</h1>
+              <p class="cover-degree">Bachelor of Science in Information Technology (1st Year)</p>
+              <p class="cover-sub">University of the Cordilleras</p>
+
+              <div class="quote-box-apothecary">
+                <p><em>"A sharp analytical mind is necessary to decode both medicinal properties and complex system architecture. Presenting her official records."</em></p>
+                <span class="narrator-tag">— Narrated by Maomao</span>
+              </div>
+
+              <div class="cover-btn-group">
+                <button class="btn-apothecary" onclick="goToTab(1)">Open Imperial Scroll →</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 1: PAST -->
+      <section id="tab-1" class="tab-content">
+        <div class="section-header-flex">
+          <div>
+            <span class="apothecary-badge">01. Educational History</span>
+            <h2>Past <span>Academic Background</span></h2>
+          </div>
+          <div class="narrator-bubble">
+            <span class="narrator-name">Jinshi:</span> "Her historical archives indicate steady academic grounding from primary through senior high school."
+          </div>
+        </div>
+
+        <div class="grid-3d">
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">🏫</span>
+              <span class="pill-tag">Primary (2019-2020)</span>
+            </div>
+            <h3>Primary School</h3>
+            <p class="school-title">Cypress Christian Foundation School</p>
+            <p class="card-desc">Completed elementary education with foundational training and graduation recognition.</p>
+          </div>
+
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">🎓</span>
+              <span class="pill-tag">Secondary (2022-2023)</span>
+            </div>
+            <h3>Secondary School</h3>
+            <p class="school-title">Tuba National High School</p>
+            <p class="card-desc">Finished junior high school with graduation recognition and core discipline.</p>
+          </div>
+
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">🏛️</span>
+              <span class="pill-tag">Senior High (2025-2026)</span>
+            </div>
+            <h3>Senior High School</h3>
+            <p class="school-title">University of the Cordilleras</p>
+            <p class="card-desc">Completed senior high curriculum with formal graduation recognition.</p>
+            <div class="media-placeholder mini-box">
+              <span>[ Graduation Proof / Documentation ]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: PRESENT -->
+      <section id="tab-2" class="tab-content">
+        <div class="section-header-flex">
+          <div>
+            <span class="apothecary-badge">02. Current Status</span>
+            <h2>Present <span>BSIT & University Life</span></h2>
+          </div>
+          <div class="narrator-bubble">
+            <span class="narrator-name">Consort Gyokuyou:</span> "Look at how diligently she manages her university studies and family bonds!"
+          </div>
+        </div>
+
+        <div class="grid-3d">
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">🏛️</span>
+              <span class="pill-tag">Current Institution</span>
+            </div>
+            <h3>University of the Cordilleras</h3>
+            <p class="school-title">BSIT – First Year</p>
+            <p class="card-desc">Enrolled in Information Technology. Utilizing Canvas LMS and building foundational web pages.</p>
+            <div class="media-placeholder mini-box">
+              <span>[ Student ID & Proof of Enrollment ]</span>
+            </div>
+          </div>
+
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">👨‍👩‍👧</span>
+              <span class="pill-tag">Family Roots</span>
+            </div>
+            <h3>Personal Milestones</h3>
+            <div class="photo-grid-2">
+              <div class="media-placeholder mini-box">
+                <span>[ Photo: Hugging Mother ]</span>
+              </div>
+              <div class="media-placeholder mini-box">
+                <span>[ Photo: Handshaking Father ]</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-3d">
+            <div class="card-head">
+              <span class="card-emoji">💻</span>
+              <span class="pill-tag">Active Projects</span>
+            </div>
+            <h3>Programming Toolkit</h3>
+            <p class="school-title">CC1 & Web Portfolio</p>
+            <p class="card-desc">Developing Radix converters, custom Arithmetic operations, Bitwise tools, and this responsive web portfolio.</p>
+            <div class="tag-group">
+              <span class="tag-jade">Radix Engine</span>
+              <span class="tag-jade">Bitwise Ops</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 3: FUTURE -->
+      <section id="tab-3" class="tab-content">
+        <div class="section-header-flex">
+          <div>
+            <span class="apothecary-badge">03. Career Ambition</span>
+            <h2>Future <span>Cybersecurity Vision</span></h2>
+          </div>
+          <div class="narrator-bubble">
+            <span class="narrator-name">Gaoshun:</span> "A strategic career path. She is destined to secure major digital networks globally."
+          </div>
+        </div>
+
+        <div class="split-3d">
+          <div class="card-3d highlight-3d">
+            <div class="card-head">
+              <span class="card-emoji">🛡️</span>
+              <span class="pill-crimson">Target Goal</span>
+            </div>
+            <h3>Cybersecurity Specialist / Ethical Hacker</h3>
+            <p class="card-desc">Envisioning a professional career as an elite <strong>Cybersecurity Expert & Ethical Hacker</strong> at leading global enterprises like <strong>Microsoft</strong>, protecting systems and cloud architecture.</p>
+            <div class="skill-chips">
+              <span>Network Defense</span>
+              <span>Penetration Testing</span>
+              <span>Global Tech Enterprise</span>
+            </div>
+          </div>
+
+          <div class="future-frame-3d">
+            <div class="media-placeholder ai-future-box">
+              <span>[ AI Professional Photo: Working at Microsoft US / Tech Desk ]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <footer class="bottom-bar-3d">
+      <button id="prevBtn" class="ctrl-btn" onclick="prevTab()">← Previous Scroll</button>
+      <div class="page-num">Imperial Page <span id="pageIndicator">Cover</span></div>
+      <button id="nextBtn" class="ctrl-btn btn-primary-ctrl" onclick="nextTab()">Next Scroll →</button>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
